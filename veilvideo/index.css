@@ -1,0 +1,168 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%; /* Dark Blue/Gray */
+    --foreground: 210 40% 98%; /* Light Gray/White */
+
+    --card: 222.2 84% 6.9%; /* Slightly lighter than background */
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 262.1 83.3% 57.8%; /* Vibrant Purple */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 188.1 83.3% 47.8%; /* Vibrant Teal */
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%; /* Dark Red */
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 262.1 83.3% 57.8%; /* Primary color for focus rings */
+
+    --radius: 0.75rem; /* Slightly more rounded */
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 6.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 262.1 83.3% 57.8%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 188.1 83.3% 47.8%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 262.1 83.3% 57.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Custom scrollbar for a more modern look */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: var(--radius);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--accent));
+}
+
+/* Glassmorphism effect utility */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.05); /* Adjust alpha for more/less transparency */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* DDR Engagement Styles */
+.ddr-background-grid {
+    background-size: 50px 50px;
+    background-image:
+        linear-gradient(to right, rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+    animation: ddr-pulse 2s infinite ease-in-out;
+}
+
+.ddr-background-grid-sparkle::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-size: 200px 200px;
+    background-image: radial-gradient(circle, rgba(0,255,255,0.3) 1px, transparent 1px);
+    animation: ddr-grid-sparkle 4s infinite;
+    pointer-events: none;
+}
+
+.ddr-background-flicker {
+    background-size: 50px 50px;
+    background-image:
+        linear-gradient(to right, rgba(255, 69, 0, 0.15) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 69, 0, 0.15) 1px, transparent 1px);
+    animation: ddr-flicker 1s infinite alternate;
+}
+
+.ddr-background-stardust {
+    position: relative;
+    overflow: hidden;
+}
+
+.ddr-stardust-particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    animation: ddr-stardust 5s linear infinite;
+    box-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
+}
+
+.ddr-video-window-idle {
+  box-shadow: 0 0 15px 2px theme('colors.electric-blue'), 0 0 5px 1px theme('colors.electric-blue') inset;
+  animation: ddr-pulse 2s infinite;
+}
+.ddr-video-window-low {
+  box-shadow: 0 0 15px 3px theme('colors.flame-orange'), 0 0 8px 1px theme('colors.flame-orange') inset;
+  animation: ddr-pulse 1.5s infinite;
+}
+.ddr-video-window-medium {
+  box-shadow: 0 0 20px 4px theme('colors.primary.DEFAULT'), 0 0 10px 2px theme('colors.secondary.DEFAULT') inset;
+  animation: ddr-pulse 1s infinite;
+}
+.ddr-video-window-high {
+  animation: ddr-flame-border 1.5s infinite, ddr-pulse 0.7s infinite;
+}
+
+.ddr-arrow {
+  position: absolute;
+  font-size: 3rem;
+  font-weight: bold;
+  opacity: 0;
+  text-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
+}
+
